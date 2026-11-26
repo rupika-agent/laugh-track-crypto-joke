@@ -14,7 +14,13 @@ import os
 ENTRY = "I checked my portfolio at 3 a.m. and the chart stared back like a disappointed parent."
 
 # The gate allows 1 to 200 characters; keep the entry inside it.
-assert 1 <= len(ENTRY) <= 200, f"entry length {len(ENTRY)} outside 1-200"
+MAX_CHARS = 200
+MIN_CHARS = 1
+assert MIN_CHARS <= len(ENTRY) <= MAX_CHARS, (
+    f"entry length {len(ENTRY)} outside {MIN_CHARS}-{MAX_CHARS}"
+)
+# A single line with no leading or trailing whitespace.
+assert ENTRY == ENTRY.strip(), "entry must not start or end with whitespace"
 
 
 OUTPUT_PATH = "/output/entry.txt"
